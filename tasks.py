@@ -14,6 +14,7 @@ def lint(c, tests=False):
         #   C0116 - Function docstring.
         c.run("pylint tests -d W0621,C0116")
     else:
+        c.run("pydocstyle backer --convention=google")
         c.run("pylint backer")
 
 
