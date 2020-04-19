@@ -14,6 +14,7 @@ def parser():
 
 class TestArgParsing:
     """Argument Parser Tests."""
+
     def test_no_args(self, parser):
         """Make sure the application exits when no args are given."""
         with raises(SystemExit):
