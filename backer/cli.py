@@ -19,7 +19,6 @@ def get_parser():
     parser.add_argument(
         "-r",
         "--root",
-        required=True,
         type=Path,
         default=Path("."),
         help="Root of the added files. Defaults to './'.",
