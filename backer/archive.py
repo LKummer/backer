@@ -21,7 +21,7 @@ def archive_files(files, root, output):
             ## Check if path is file or directory.
             if path.is_dir():
                 archive_folder(my_zip, path, root)
-            else:
+            elif path.is_file():
                 archive_file(my_zip, path, root)
         my_zip.close()
 
