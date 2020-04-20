@@ -20,12 +20,12 @@ def archive_files(files, root, output):
         for path in files:
             ## Check if path is file or directory.
             if path.is_dir():
-                add_folder_to_zip(my_zip, path, root)
+                archive_folder(my_zip, path, root)
             else:
-                my_zip.write(path, path.relative_to(root))
+                archive_file(my_zip, path, root)
         my_zip.close()
 
-def add_folder_to_zip(zip, folder, root):
+def archive_folder(zip, folder, root):
     """Archive a folder recursively into a zip archive.
     
     Args:
@@ -37,3 +37,13 @@ def add_folder_to_zip(zip, folder, root):
         for file_name in file_names:
             file_path = Path(files_root).joinpath(file_name)
             zip.write(file_path, file_path.relative_to(root))
+
+def archive_file(zip, file, root):
+    """Archive a file into a zip archive.
+    
+    Args:
+        zip (zipfile.ZipFile): ZIP file to write to.
+        file (pathlib.Path): File to add to the archive.
+        root (pathlib.Path): Root of the archive relative to the folder.
+    """
+    zip.write(file, file.relative_to(root))
