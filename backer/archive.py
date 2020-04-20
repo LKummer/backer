@@ -25,11 +25,14 @@ def archive_files(files, root, output):
                 my_zip.write(path, path.relative_to(root))
         my_zip.close()
 
-
-## Add entire folder and its contents to existing Zip file.
-## zip is a ZipFile handle.
 def add_folder_to_zip(zip, folder, root):
-    """Archive a folder recursively into a zip archive."""
+    """Archive a folder recursively into a zip archive.
+    
+    Args:
+        zip (zipfile.ZipFile): ZIP file to write to.
+        folder (pathlib.Path): Folder to add to the archive.
+        root (pathlib.Path): Root of the archive relative to the folder.
+    """
     for files_root, _, file_names in walk(folder):
         for file_name in file_names:
             file_path = Path(files_root).joinpath(file_name)
