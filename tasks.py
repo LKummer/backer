@@ -11,8 +11,8 @@ def lint(c, tests=False):
     if tests:
         # When linting the tests, these rules are disabled:
         #   W0621 - Redefining names, because of Pytest fixtures.
-        #   C0116 - Function docstring.
-        c.run("pylint tests -d W0621,C0116")
+        #   R0201 - No self use, to group tests in classes.
+        c.run("pylint tests -d W0621,R0201")
     else:
         c.run("pydocstyle backer --convention=google")
         c.run("pylint backer")
