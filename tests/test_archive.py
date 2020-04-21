@@ -91,4 +91,4 @@ class TestFileArchiving:
         files = [data_path.joinpath("files/file_a.md")]
         result = tmp_path.joinpath("invalid_root.zip")
         with raises(ValueError):
-            archive_files(files, data_path.joinpath('../../'), result)
+            archive_files(files, data_path.joinpath("../../"), result)
