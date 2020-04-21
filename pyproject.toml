@@ -4,6 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["Lior Kummer"]
 
+[tool.poetry.scripts]
+backer = 'backer.main:run'
+
 [tool.poetry.dependencies]
 python = "^3.8"
 
