@@ -88,9 +88,7 @@ class TestFileArchiving:
 
     def test_root_is_not_in_file_paths(self, data_path, tmp_path):
         """Exception is raised when file paths cannot be made relative to the root path."""
-        files = [
-            data_path.joinpath("files/file_a.md"),
-        ]
+        files = [data_path.joinpath("files/file_a.md")]
         result = tmp_path.joinpath("invalid_root.zip")
         with raises(ValueError):
             archive_files(files, data_path.joinpath('../../'), result)

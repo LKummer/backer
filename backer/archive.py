@@ -25,6 +25,7 @@ def archive_files(files, root, output):
                 archive_file(my_zip, path, root)
         my_zip.close()
 
+
 def archive_folder(zip, folder, root):
     """Archive a folder recursively into a zip archive.
     
@@ -37,6 +38,7 @@ def archive_folder(zip, folder, root):
         for file_name in file_names:
             file_path = Path(files_root).joinpath(file_name)
             zip.write(file_path, file_path.relative_to(root))
+
 
 def archive_file(zip, file, root):
     """Archive a file into a zip archive.
