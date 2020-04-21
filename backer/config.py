@@ -1,21 +1,19 @@
 """Configuration serialization and deserialization."""
 
-from collections import namedtuple
-
 
 def parse_config(config):
     """Parse configuration from serialized string.
 
     Args:
         config (str): Serialized configuration to parse.
-    
+
     Returns:
         map: Parsed configuration.
-    
+
     Raises:
         ValueError: If the serialized string failed the verification.
     """
-    pass
+    return {}
 
 
 def serialize_config(config):
@@ -23,11 +21,11 @@ def serialize_config(config):
 
     Args:
         config (map): Configuration to serialize.
-    
+
     Returns:
         str: Serialized configuration.
     """
-    pass
+    return ""
 
 
 def verify_configuration_types(config):

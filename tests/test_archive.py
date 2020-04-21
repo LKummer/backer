@@ -11,10 +11,17 @@ from backer.archive import archive_files
 
 @fixture
 def data_path():
+    """Fixture for getting a path to the tests data folder.
+
+    Returns:
+        pathlib.Path: Path to the test data folder.
+    """
     return Path("./tests/data")
 
 
 class TestFileArchiving:
+    """Test file archiving functionality."""
+
     def test_multiple_files(self, data_path, tmp_path):
         """Files are added correctly."""
         files = [

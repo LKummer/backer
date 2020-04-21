@@ -9,6 +9,10 @@ from backer.cli import get_parser
 
 @fixture
 def parser():
+    """Fixture for getting the CLI module's argument parser.
+
+    Returns:
+        argparse.ArgumentParser: CLI module's argument parser."""
     return get_parser()
 
 

@@ -1,3 +1,6 @@
+"""Backup cycling module."""
+
+
 def keep_latest_backups(folder, archive_glob, count):
     """Delete old backups to keep only the latest backups.
 

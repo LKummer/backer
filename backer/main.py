@@ -3,6 +3,7 @@ from backer.cli import get_parser
 
 
 def run():
+    """Run the CLI program."""
     args = get_parser().parse_args()
     print(args)
 

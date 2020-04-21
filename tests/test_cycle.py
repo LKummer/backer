@@ -1,7 +1,4 @@
-"""Cycle module tests.
-"""
-
-from pathlib import Path
+"""Cycle module tests."""
 
 from backer.cycle import keep_latest_backups
 
