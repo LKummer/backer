@@ -23,7 +23,7 @@ class TestConfigSerialization:
         """Throw when a config attribute type is incorrect."""
         with raises(ValueError):
             parse_config('{"count": "hello"}')
-    
+
     def test_parsing_empty(self):
         """Throw when parsing an empty string."""
         with raises(ValueError):

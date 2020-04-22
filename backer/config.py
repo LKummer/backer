@@ -1,5 +1,7 @@
 """Configuration serialization and deserialization."""
 
+from json import dumps, loads
+
 
 def parse_config(config):
     """Parse configuration from serialized string.
@@ -13,7 +15,11 @@ def parse_config(config):
     Raises:
         ValueError: If the serialized string failed the verification.
     """
-    return {}
+    unverified_config = loads(config)
+    if not verify_configuration_types(unverified_config):
+        raise ValueError("Configuration verification failed.")
+    result = {"count": unverified_config["count"]}
+    return result
 
 
 def serialize_config(config):
@@ -25,7 +31,7 @@ def serialize_config(config):
     Returns:
         str: Serialized configuration.
     """
-    return ""
+    return dumps(config)
 
 
 def verify_configuration_types(config):
@@ -37,6 +43,6 @@ def verify_configuration_types(config):
     Returns:
         bool: True when types are valid, False when invalid.
     """
-    if not isinstance(config.count, str):
+    if not isinstance(config["count"], int):
         return False
     return True
