@@ -5,7 +5,7 @@ description = ""
 authors = ["Lior Kummer"]
 
 [tool.poetry.scripts]
-backer = 'backer.main:run'
+backer = 'backer:run'
 
 [tool.poetry.dependencies]
 python = "^3.8"
