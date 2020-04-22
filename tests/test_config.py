@@ -23,3 +23,14 @@ class TestConfigSerialization:
         """Throw when a config attribute type is incorrect."""
         with raises(ValueError):
             parse_config('{"count": "hello"}')
+    
+    def test_parsing_empty(self):
+        """Throw when parsing an empty string."""
+        with raises(ValueError):
+            parse_config("")
+
+    def test_parsing_extra_fields(self):
+        """Correctly parse the config when extra fields are present."""
+        config = parse_config('{"count": 3, "someOddField": 0}')
+        assert config["count"] == 3
+        assert len(config) == 1
