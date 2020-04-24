@@ -14,8 +14,9 @@ def archive_files(files, root, output):
         output (pathlib.Path): Output archive file.
     """
     print("archive_files called with {}, {}, {}.".format(files, root, output))
-    ## root is root directory inside the created zip.
-    ## Make new Zip file with the required name.
+    # If no files are given fail silently:
+    if(len(files) == 0):
+        return
     with ZipFile(output, "a") as zipfile:
         for path in files:
             ## Check if path is file or directory.
