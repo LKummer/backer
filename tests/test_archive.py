@@ -99,3 +99,38 @@ class TestFileArchiving:
         result = tmp_path.joinpath("invalid_root.zip")
         with raises(ValueError):
             archive_files(files, data_path.joinpath("../../"), result)
+
+    def test_archive_into_existing_archive(self, data_path, tmp_path):
+        """Old archive is overwritten by new archive."""
+        old_files = [
+            data_path.joinpath("files/file_a.md"),
+            data_path.joinpath("files/file_b.md")
+        ]
+        result = tmp_path.joinpath("exists.zip")
+        archive_files(old_files, data_path, result)
+        new_files = [data_path.joinpath("files/file_c.md")]
+        archive_files(new_files, data_path, result)
+        # Check to avoid errors when the zip file does not exist.
+        assert result.exists()
+        if result.exists():
+            archive = ZipPath(result)
+            # Check only files from the last archiving operation exist.
+            assert not archive.joinpath("files/file_a.md").exists()
+            assert not archive.joinpath("files/file_b.md").exists()
+            assert archive.joinpath("files/file_c.md").exists()
+
+    def test_archive_same_files_twice(self, data_path, tmp_path):
+        """No warnings issues when the same files are added to an existing archive."""
+        files = [
+            data_path.joinpath("files/file_a.md"),
+            data_path.joinpath("files/file_b.md")
+        ]
+        result = tmp_path.joinpath("exists.zip")
+        archive_files(files, data_path, result)
+        archive_files(files, data_path, result)
+        # Check to avoid errors when the zip file does not exist.
+        assert result.exists()
+        if result.exists():
+            archive = ZipPath(result)
+            assert archive.joinpath("files/file_a.md").exists()
+            assert archive.joinpath("files/file_b.md").exists()
