@@ -17,7 +17,7 @@ def archive_files(files, root, output):
     # If no files are given fail silently:
     if len(files) == 0:
         return
-    with ZipFile(output, "a") as zipfile:
+    with ZipFile(output, "w") as zipfile:
         for path in files:
             ## Check if path is file or directory.
             if path.is_dir():
