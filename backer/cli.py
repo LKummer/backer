@@ -50,7 +50,7 @@ class FolderOnlyAction(Action):
 
     The argument must be of type `pathlib.Path`.
 
-    Throws:
+    Raises:
         argparse.ArgumentError: When the path value points to a file.
     """
 

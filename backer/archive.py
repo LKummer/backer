@@ -16,7 +16,7 @@ def archive_files(files, root, output):
         root (pathlib.Path): Root of the content added to the archive.
         output (pathlib.Path): Output archive file.
 
-    Throws:
+    Raises:
         ValueError: When any of the files are not related to the root.
     """
     print("archive_files called with {}, {}, {}.".format(files, root, output))
@@ -41,7 +41,7 @@ def archive_folder(zipfile, folder, root):
         folder (pathlib.Path): Folder to add to the archive.
         root (pathlib.Path): Root of the archive relative to the folder.
 
-    Throws:
+    Raises:
         ValueError: When there is no relation between the root and the folder.
     """
     for files_root, _, file_names in walk(folder):
@@ -58,7 +58,7 @@ def archive_file(zipfile, file, root):
         file (pathlib.Path): File to add to the archive.
         root (pathlib.Path): Root of the archive relative to the folder.
 
-    Throws:
+    Raises:
         ValueError: When there is no relation between the root and the file.
     """
     zipfile.write(file, file.relative_to(root))
