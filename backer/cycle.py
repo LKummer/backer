@@ -11,9 +11,6 @@ def keep_latest_backups(folder, archive_glob, count):
     """
     matches = folder.glob(archive_glob)
     files = [file for file in matches if file.is_file()]
-    for file in files:
-        if file.is_dir():
-            files.remove(file)
     # Sort files by creation date in reverse.
     sorted_files = sorted(files, key=extract_modification_time, reverse=True)
     for file in sorted_files[count:]:
