@@ -6,6 +6,7 @@ from pathlib import Path
 from backer.cli import get_parser
 from backer.config import parse_config, serialize_config
 from backer.archive import archive_files
+from backer.cycle import keep_latest_backups
 
 
 __version__ = "0.1.0"
@@ -47,3 +48,6 @@ def run():
     logger.debug(f"Archiving files: {files_to_archive}.")
     output_archive = args.output.joinpath("archive.backer.zip")
     archive_files(files_to_archive, args.root, output_archive)
+
+    # Delete backups to keep only the configured count.
+    keep_latest_backups(args.output, "*.backer.zip", config["count"])
