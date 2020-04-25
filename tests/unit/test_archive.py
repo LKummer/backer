@@ -104,7 +104,7 @@ class TestFileArchiving:
         """Old archive is overwritten by new archive."""
         old_files = [
             data_path.joinpath("files/file_a.md"),
-            data_path.joinpath("files/file_b.md")
+            data_path.joinpath("files/file_b.md"),
         ]
         result = tmp_path.joinpath("exists.zip")
         archive_files(old_files, data_path, result)
@@ -123,7 +123,7 @@ class TestFileArchiving:
         """No warnings issues when the same files are added to an existing archive."""
         files = [
             data_path.joinpath("files/file_a.md"),
-            data_path.joinpath("files/file_b.md")
+            data_path.joinpath("files/file_b.md"),
         ]
         result = tmp_path.joinpath("exists.zip")
         archive_files(files, data_path, result)
