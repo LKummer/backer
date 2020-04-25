@@ -26,7 +26,8 @@ def get_parser():
         "--count",
         default=3,
         type=int,
-        help="Count of backups to keep when deleting old archives. Overriden by the configuration. Defaults to 3.",
+        help="Count of backups to keep when deleting old archives. Overriden by "
+        + "the configuration. Defaults to 3.",
     )
     parser.add_argument(
         "-r",
