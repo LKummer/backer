@@ -22,6 +22,13 @@ def get_parser():
         help="Output folder. Required.",
     )
     parser.add_argument(
+        "-c",
+        "--count",
+        default=3,
+        type=int,
+        help="Count of backups to keep when deleting old archives. Overriden by the configuration. Defaults to 3.",
+    )
+    parser.add_argument(
         "-r",
         "--root",
         type=Path,

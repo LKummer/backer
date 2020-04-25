@@ -42,10 +42,13 @@ class TestArgParsing:
         assert isinstance(args.glob[0], str)
         assert args.output
         assert isinstance(args.output, Path)
+        # Check default arguments.
+        assert args.count == 3
+        assert args.root == Path(".")
 
     def test_all_arguments(self, parser):
         """Make sure it works with maximum arguments and parses them correctly."""
-        args = parser.parse_args(["*.py", "-o", "folder", "-r", "."])
+        args = parser.parse_args(["*.py", "-o", "folder", "-r", ".", "-c", "5"])
         assert args.glob
         assert len(args.glob) == 1
         assert isinstance(args.glob[0], str)
@@ -53,6 +56,8 @@ class TestArgParsing:
         assert isinstance(args.output, Path)
         assert args.root
         assert isinstance(args.root, Path)
+        assert args.count
+        assert isinstance(args.count, int)
 
     def test_output_to_file(self, parser, tmp_path):
         """Output argument should only accept paths to folders."""
