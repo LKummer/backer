@@ -12,10 +12,13 @@ def lint(c, tests=False):
         # When linting the tests, these rules are disabled:
         #   W0621 - Redefining names, because of Pytest fixtures.
         #   R0201 - No self use, to group tests in classes.
-        c.run("pylint tests -d W0621,R0201")
+        #   R0903 - Too few public methods.
+        c.run("pylint tests -d W0621,R0201,R0903")
     else:
         c.run("pydocstyle backer --convention=google")
-        c.run("pylint backer")
+        # When linting, these rules are disabled:
+        #   R0903 - Too few public methods.
+        c.run("pylint backer -d R0903")
 
 
 @task
