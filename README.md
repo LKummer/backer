@@ -34,7 +34,7 @@ Lint the backer module files:
 $ inv lint
 ```
 
-Lint the tests (currently not fully configured):
+Lint the tests:
 
 ```
 $ inv lint -t
@@ -70,7 +70,7 @@ Write concisely and accurately.
 Follow the
 [Google Napoleon docstring style.](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
 
-Note the docstrings use ReStructuredText instead of Markdown.
+The docstrings are written in Markdown.
 
 ### Testing
 
