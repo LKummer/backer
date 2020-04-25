@@ -6,6 +6,12 @@ from pathlib import Path
 def get_parser():
     """Creates a CLI argument parser.
 
+    Supports the following arguments:
+    * `[glob]` - Multiple strings, required.
+    * `-o`, `--output` - Path to folder, required. Either existing or not.
+    * `-c`, `--count` - Integer, defaults to 3.
+    * `-r`, `--root` - Path, defaults to `"."`.
+
     Returns:
         argparse.ArgumentParser: Argument parser.
     """
@@ -40,7 +46,13 @@ def get_parser():
 
 
 class FolderOnlyAction(Action):
-    """Action that only accepts a pathlib.Path pointing to a folder."""
+    """Action that only accepts a `pathlib.Path` pointing to a folder.
+
+    The argument must be of type `pathlib.Path`.
+
+    Throws:
+        argparse.ArgumentError: When the path value points to a file.
+    """
 
     def __call__(self, parser, namespace, values, option_string=None):
         """Action call, see argparse.Action documentation for details."""
