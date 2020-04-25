@@ -1,27 +1,14 @@
 """Application Integration Tests"""
 
-from pathlib import Path
 from zipfile import Path as ZipPath
 
-from pytest import fixture
-
 from os import system
-
-
-@fixture
-def data_path():
-    """Fixture for getting a path to the tests data folder.
-
-    Returns:
-        pathlib.Path: Path to the test data folder.
-    """
-    return Path("./tests/data")
 
 
 class TestIntegration:
     """Test module integration."""
 
-    def test_first_run(self, data_path, tmp_path):
+    def test_first_run(self, tmp_path):
         """When no backups folder or config are found, they are created."""
         result = system(
             f'poetry run backer tests/data/files -o "{tmp_path}" -r tests/data/files'
