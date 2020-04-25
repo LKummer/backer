@@ -2,6 +2,7 @@
 
 import logging
 from pathlib import Path
+from datetime import datetime
 
 from backer.cli import get_parser
 from backer.config import parse_config, serialize_config
@@ -46,7 +47,9 @@ def run():
         sum(map(lambda glob: list(execution_path.glob(glob)), args.glob), [])
     )
     logger.debug(f"Archiving files: {files_to_archive}.")
-    output_archive = args.output.joinpath("archive.backer.zip")
+    time = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+    output_archive = args.output.joinpath(f"{time}.backer.zip")
+    logger.debug(f"Writing archive {output_archive}.")
     archive_files(files_to_archive, args.root, output_archive)
 
     # Delete backups to keep only the configured count.
