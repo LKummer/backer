@@ -3,12 +3,14 @@
 from time import sleep
 from backer.cycle import keep_latest_backups
 
+
 def short_sleep():
     """Sleep for a very short duration.
 
     Used for delaying file creations.
     """
     sleep(0.0000001)
+
 
 class TestBackupCycling:
     """Test the backup cycling functionality."""
@@ -56,7 +58,6 @@ class TestBackupCycling:
         second.open("w").close()
         # Keep 4 files, only 2 exist.
         keep_latest_backups(tmp_path, "*.bak.zip", 4)
-
 
     def test_nothing_to_delete(self, tmp_path):
         """No error thrown when nothing needs to be deleted."""

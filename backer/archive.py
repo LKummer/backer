@@ -15,7 +15,7 @@ def archive_files(files, root, output):
     """
     print("archive_files called with {}, {}, {}.".format(files, root, output))
     # If no files are given fail silently:
-    if(len(files) == 0):
+    if len(files) == 0:
         return
     with ZipFile(output, "a") as zipfile:
         for path in files:
