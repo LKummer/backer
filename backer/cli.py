@@ -40,7 +40,8 @@ def get_parser():
         "--root",
         type=Path,
         default=Path("."),
-        help="Root of the added files. Defaults to './'.",
+        help="Root of the archived files. Defaults to '.'. Must be a common "
+        + "parent of all globbed files.",
     )
     return parser
 
