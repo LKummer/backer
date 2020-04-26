@@ -12,6 +12,8 @@ from backer.cycle import keep_latest_backups
 
 __version__ = "0.1.0"
 
+CONFIG_NAME = "backer.config.json"
+
 
 def run():
     """Run the CLI program."""
@@ -30,7 +32,7 @@ def run():
     config = {"count": args.count}
 
     # Read the output config file, or create a new one it it does not exist.
-    config_path = args.output.joinpath(".backerrc")
+    config_path = args.output.joinpath(CONFIG_NAME)
     if config_path.exists():
         config_text = config_path.open("r").read()
         config = parse_config(config_text)

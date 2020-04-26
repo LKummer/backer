@@ -4,6 +4,8 @@ from zipfile import Path as ZipPath
 
 from os import system
 
+from backer import CONFIG_NAME
+
 
 class TestIntegration:
     """Test module integration."""
@@ -15,7 +17,7 @@ class TestIntegration:
         )
         assert result == 0
         # Check the created configuration.
-        config = tmp_path.joinpath(".backerrc")
+        config = tmp_path.joinpath(CONFIG_NAME)
         assert config.exists()
         config_text = config.open("r").read()
         assert config_text == '{"count": 3}'
@@ -33,7 +35,7 @@ class TestIntegration:
         tmp_path.joinpath("first.backer.zip").open("w").close()
         tmp_path.joinpath("second.backer.zip").open("w").close()
         tmp_path.joinpath("third.backer.zip").open("w").close()
-        config = tmp_path.joinpath(".backerrc").open("w")
+        config = tmp_path.joinpath(CONFIG_NAME).open("w")
         config.write('{"count": 1}')
         config.close()
         # Execute the program with a different file count to check it is replaced
