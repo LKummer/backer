@@ -1,5 +1,10 @@
+# Cache folders.
 .pytest_cache/
 __pycache__/
 *.egg-info/
 
+# Editor configuration.
 .vscode/
+
+# Poetry package build directory.
+dist/
