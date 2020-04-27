@@ -1,8 +1,11 @@
 [tool.poetry]
 name = "backer"
 version = "0.1.0"
-description = ""
-authors = ["Lior Kummer"]
+description = "Backup archiving with rollover in a simple CLI."
+authors = ["Lior Kummer", "Amit Kummer"]
+keywords = ["backup", "archive", "rollover", "rotation", "cycling"]
+readme = "README.md"
+license = "MIT"
 
 [tool.poetry.scripts]
 backer = 'backer:run'
