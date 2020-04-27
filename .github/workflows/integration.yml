@@ -20,12 +20,14 @@ jobs:
       
       - name: Install Poetry
         run: pip3 install poetry
+      - name: Configure Poetry
+        run: poetry config virtualenvs.create false
       - name: Install Dependencies
         run: poetry install
       
-      - name: Run Tests
-        run: pytest
       - name: Lint Sources
         run: inv lint
       - name: Lint Tests
         run: inv lint -t
+      - name: Run Tests
+        run: pytest
