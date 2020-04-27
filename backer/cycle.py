@@ -10,14 +10,11 @@ def keep_latest_backups(folder, archive_glob, count):
         count (int): Count of backups to keep.
     """
     matches = folder.glob(archive_glob)
-    files = [file for file in matches if file.is_file()]
+    files = filter(lambda file: file.is_file(), matches)
     # Sort files by creation date in reverse.
     sorted_files = sorted(files, key=extract_modification_time, reverse=True)
     for file in sorted_files[count:]:
-        try:
-            file.unlink()
-        except FileNotFoundError:
-            print("Path is not a file.")
+        file.unlink()
 
 
 def extract_modification_time(file):
