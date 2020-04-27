@@ -11,9 +11,11 @@ def lint(c, tests=False):
     if tests:
         # When linting the tests, these rules are disabled:
         #   W0621 - Redefining names, because of Pytest fixtures.
+        #   W1202 - Use % formatting in logging functions, to use f strings for
+        #           logging.
         #   R0201 - No self use, to group tests in classes.
         #   R0903 - Too few public methods.
-        c.run("pylint tests -d W0621,R0201,R0903")
+        c.run("pylint tests -d W0621,W1202,R0201,R0903")
     else:
         c.run("pydocstyle backer --convention=google")
         # When linting, these rules are disabled:
