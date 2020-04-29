@@ -10,6 +10,8 @@ Welcome to Backer's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   development/index
+   guides/index
 
 
 Indices and tables
