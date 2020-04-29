@@ -8,3 +8,6 @@ __pycache__/
 
 # Poetry package build directory.
 dist/
+
+# Sphinx docs build directory.
+/docs/build
