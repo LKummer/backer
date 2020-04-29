@@ -26,3 +26,8 @@ def lint(c, tests=False):
 @task
 def format(c):
     c.run("black backer tests tasks.py")
+
+
+@task
+def docs(c):
+    c.run("sphinx-build -b html docs/source docs/build")
